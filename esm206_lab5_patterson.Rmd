@@ -7,21 +7,79 @@ output:
     toc: yes
     theme: cosmo
     number_sections: yes
+    code_folding: hide 
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=TRUE, warning = FALSE, message = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
 ```
 
 stage and commit. type commit message you want to be associated with changes. Press commit. Pull (down arrow). Then Push. Then when you go to github repo and refresh. 
 
-.Rproj.user
-.Rhistory
-.RData
-.Ruserdata
-*.html
+calculate confidence interval for single sample
 
-# Introduction
+# Confidence intervals 
 
-### More information
+In this section we'll learn to use the 't.test)' function as a way to return the condfidence interval using the t-distribution.
+
+## Example 1 
+
+Create a mock sample of observation values, and find the confidence interval. Then we'll learn how to report that. 
+
+```{r}
+pika_mass <- c(82, 94, 110, 5000, 86, 99, 102) 
+
+pika_mean <- mean(pika_mass)
+
+pika_sd <- sd(pika_mass)
+
+pika_ci <- t.test(pika_mass)
+```
+degrees of freedom is measure of sample size or number of variables 
+## Risky and Tedious way:
+
+Mean pika mass at Paiute Pass is 91.9 g $\pm$ 13.5 g (mean $\pm$ 1 standard deviation, n = 7) with a 95% confidence interval of [79.4, 104.4] g.
+
+don't manually type or copy and paste values
+
+command return to run single line
+
+In-line code referencing to stored objects!
+
+Use a single backtick on either side of a lowercase r to create an in-line bit of code
+
+## A high initial investment, but safer and better way
+
+Mean pika mass at Paiute Passs is 
+'r round(pika_mean, 1)' g $\pm$ 'r round(pika_sd, 1)' g (mean $\pm$ 1 standard deviation, n = 'r
+Length(pika_mass)') with a 95% confidence interval of ['r pika_ci$conf.int[1]', 'r pika_ci$conf.int]
+
+
+# Two-sample t-test
+
+Use a two-sample t-test to test the null hypothesis that samples were drawn from populations with the same mean (difference in means = 0).
+
+- H0: Means difference = 0
+- HA: Means difference is NOT - 0
+
+this is a two-sided t-test beacuse no directionality is implied.
+
+## Example 1 
+
+```{r}
+oak_trees <- c (29, 19, 22, 30, 35, 16, 20, 7)
+
+pine_trees <- c(48, 32, 41, 40, 56, 70, 30, 19, 20)
+```
+
+Is there a significant difference in mean heights for oak and pine trees? 
+
+```{r}
+trees_t <- t.test(oak_trees, pine_trees) 
+```
+
+The p-value of 'r trees_t$p.value' means that...
+
+1.8% chance of finding sample means *at least as different as those I found* by random chance if they were drawn from populations with the same mean height. 
 
