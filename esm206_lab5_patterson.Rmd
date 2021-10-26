@@ -1,0 +1,27 @@
+---
+title: "Lab 5 Alissa Patterson"
+author: "Alissa Patterson"
+date: "10/26/2021"
+output: 
+  html_document: 
+    toc: yes
+    theme: cosmo
+    number_sections: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+stage and commit. type commit message you want to be associated with changes. Press commit. Pull (down arrow). Then Push. Then when you go to github repo and refresh. 
+
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+*.html
+
+# Introduction
+
+### More information
+
